@@ -145,63 +145,86 @@ export default function CustomerAnalysis() {
               />
             </div>
           </div>
-        ) : (
-          /* Bonus Value-Add Dashboard layout for other tabs! */
-          <div className="animate-fade-in">
-            <header>
-              <h1 className="page-title">{activeTab}</h1>
-              <p className="page-subtitle">Unified analytics suite for Customer Success AI.</p>
+        ) : activeTab === 'Overview' ? (
+          /* Simple & Minimalistic Overview Tab */
+          <div className="animate-fade-in" style={{ maxWidth: '800px', padding: '12px 0' }}>
+            <header style={{ marginBottom: '36px' }}>
+              <h1 className="page-title" style={{ fontSize: '24px', fontWeight: '700', color: '#1e293b' }}>Overview</h1>
+              <p className="page-subtitle" style={{ fontSize: '14px', color: 'var(--text-muted)', marginTop: '4px' }}>
+                System-wide customer success metrics and retention health.
+              </p>
             </header>
 
             <div style={{ display: 'flex', flexDirection: 'column', gap: '32px' }}>
-              {/* Analytics dashboard mockup grid */}
-              <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '24px' }}>
-                <div className="card" style={{ padding: '24px' }}>
-                  <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '16px' }}>
-                    <span style={{ fontSize: '12px', fontWeight: '700', color: 'var(--text-light)', textTransform: 'uppercase' }}>Active Customers Covered</span>
-                    <Users style={{ color: 'var(--primary)' }} />
+              {/* Minimalistic Metric KPIs */}
+              <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '16px' }}>
+                <div style={{ padding: '20px 24px', border: '1px solid var(--border-color)', borderRadius: '12px', background: '#ffffff', boxShadow: 'none' }}>
+                  <div style={{ fontSize: '11px', fontWeight: '700', color: 'var(--text-light)', textTransform: 'uppercase', letterSpacing: '0.06em' }}>
+                    Active Accounts
                   </div>
-                  <div style={{ fontSize: '32px', fontWeight: '800', fontFamily: 'var(--font-display)' }}>7,043</div>
-                  <div style={{ fontSize: '13px', color: 'var(--success)', marginTop: '4px', fontWeight: '600' }}>+8.4% since last quarter</div>
+                  <div style={{ fontSize: '28px', fontWeight: '700', fontFamily: 'var(--font-display)', marginTop: '4px', color: '#0f172a' }}>
+                    7,043
+                  </div>
                 </div>
 
-                <div className="card" style={{ padding: '24px' }}>
-                  <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '16px' }}>
-                    <span style={{ fontSize: '12px', fontWeight: '700', color: 'var(--text-light)', textTransform: 'uppercase' }}>System Churn Rate</span>
-                    <TrendingDown style={{ color: 'var(--success)' }} />
+                <div style={{ padding: '20px 24px', border: '1px solid var(--border-color)', borderRadius: '12px', background: '#ffffff', boxShadow: 'none' }}>
+                  <div style={{ fontSize: '11px', fontWeight: '700', color: 'var(--text-light)', textTransform: 'uppercase', letterSpacing: '0.06em' }}>
+                    Retention Health
                   </div>
-                  <div style={{ fontSize: '32px', fontWeight: '800', fontFamily: 'var(--font-display)' }}>16.2%</div>
-                  <div style={{ fontSize: '13px', color: 'var(--success)', marginTop: '4px', fontWeight: '600' }}>-1.2% reduction optimized by AI</div>
+                  <div style={{ fontSize: '28px', fontWeight: '700', fontFamily: 'var(--font-display)', marginTop: '4px', color: 'var(--success)' }}>
+                    83.8%
+                  </div>
                 </div>
 
-                <div className="card" style={{ padding: '24px' }}>
-                  <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '16px' }}>
-                    <span style={{ fontSize: '12px', fontWeight: '700', color: 'var(--text-light)', textTransform: 'uppercase' }}>At-Risk Account Value</span>
-                    <Activity style={{ color: 'var(--warning)' }} />
+                <div style={{ padding: '20px 24px', border: '1px solid var(--border-color)', borderRadius: '12px', background: '#ffffff', boxShadow: 'none' }}>
+                  <div style={{ fontSize: '11px', fontWeight: '700', color: 'var(--text-light)', textTransform: 'uppercase', letterSpacing: '0.06em' }}>
+                    Pending Action
                   </div>
-                  <div style={{ fontSize: '32px', fontWeight: '800', fontFamily: 'var(--font-display)' }}>$12,480</div>
-                  <div style={{ fontSize: '13px', color: 'var(--text-muted)', marginTop: '4px' }}>14 accounts flagged for high-intervention</div>
+                  <div style={{ fontSize: '28px', fontWeight: '700', fontFamily: 'var(--font-display)', marginTop: '4px', color: 'var(--warning)' }}>
+                    14
+                  </div>
                 </div>
               </div>
 
-              {/* Informational guide */}
-              <div className="card" style={{ padding: '32px' }}>
-                <h2 style={{ fontSize: '20px', fontWeight: '700', marginBottom: '12px', color: '#1e293b' }}>
-                  AI Retention Orchestrator
-                </h2>
-                <p style={{ color: 'var(--text-muted)', fontSize: '14px', lineHeight: '1.6', maxWidth: '800px', marginBottom: '20px' }}>
-                  This platform harnesses an advanced machine learning classification pipeline. By continuously assessing tenure thresholds, service utilization parameters, payment frictions, and commitment milestones, our models forecast attrition vulnerabilities long before manual alerts would trigger.
+              {/* Minimalistic Core Content */}
+              <div style={{ padding: '28px 0 0 0', borderTop: '1px solid var(--border-color)' }}>
+                <p style={{ color: 'var(--text-muted)', fontSize: '14px', lineHeight: '1.6', marginBottom: '24px', maxWidth: '640px' }}>
+                  ChurnGuard classification engines continuously analyze product telemetry, billing configurations, and subscription milestones to identify customer attrition risks before they impact recurring revenue.
                 </p>
                 <button 
                   onClick={() => setActiveTab('Customers')}
                   className="btn-primary" 
-                  style={{ alignSelf: 'flex-start', padding: '10px 20px', display: 'inline-flex', width: 'auto' }}
+                  style={{ padding: '10px 20px', display: 'inline-flex', width: 'auto', fontSize: '13px' }}
                   type="button"
                 >
                   <span>Launch Customer Analyzer</span>
-                  <ArrowRight size={16} />
+                  <ArrowRight size={14} />
                 </button>
               </div>
+            </div>
+          </div>
+        ) : (
+          /* Simple Minimalist Layout for other tabs */
+          <div className="animate-fade-in" style={{ maxWidth: '800px' }}>
+            <header style={{ marginBottom: '32px' }}>
+              <h1 className="page-title" style={{ fontSize: '24px' }}>{activeTab}</h1>
+              <p className="page-subtitle" style={{ fontSize: '14px', color: 'var(--text-muted)' }}>
+                Unified customer retention analytics suite.
+              </p>
+            </header>
+
+            <div style={{ padding: '32px 24px', border: '1px dashed var(--border-color)', borderRadius: '12px', textAlign: 'center' }}>
+              <p style={{ color: 'var(--text-muted)', fontSize: '14px', marginBottom: '16px' }}>
+                The {activeTab} workspace is being synced with live dataset streams.
+              </p>
+              <button 
+                onClick={() => setActiveTab('Customers')}
+                className="btn-primary" 
+                style={{ padding: '10px 20px', display: 'inline-flex', width: 'auto', fontSize: '13px' }}
+                type="button"
+              >
+                <span>Go to Customers Dashboard</span>
+              </button>
             </div>
           </div>
         )}

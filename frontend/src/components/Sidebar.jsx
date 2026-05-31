@@ -12,10 +12,7 @@ import {
 export default function Sidebar({ activeItem = 'Customers', onItemClick }) {
   const primaryNavItems = [
     { name: 'Overview', icon: LayoutDashboard },
-    { name: 'Customers', icon: Users },
-    { name: 'Risk Analysis', icon: TrendingUp },
-    { name: 'Health Scores', icon: Activity },
-    { name: 'Team Performance', icon: BarChart3 },
+    { name: 'Customers', icon: Users }
   ];
 
   const footerNavItems = [
