@@ -18,54 +18,54 @@ export default function DocumentationView() {
           XGBoost is an optimized distributed gradient boosting library designed to be highly efficient, flexible, and portable. It implements machine learning algorithms under the Gradient Boosting framework. XGBoost works by sequentially training a series of weak decision trees, where each subsequent tree is trained to correct the residual errors (gradients) of all previous trees combined.
         </p>
 
-        {/* Boosting CSS & SVG Animation */}
-        <div className="boosting-visualizer" style={{ marginBottom: '24px' }}>
+        {/* Boosting CSS & HTML/CSS background flow Animation */}
+        <div className="boosting-visualizer" style={{ marginBottom: '24px', display: 'flex', justifyContent: 'space-around', position: 'relative', padding: '30px 20px' }}>
           
-          {/* SVG Connector Lines and Flow Paths */}
-          <svg className="boosting-connector-svg" viewBox="0 0 800 120" preserveAspectRatio="none">
-            {/* Path 1: Input to Tree 1 */}
-            <path d="M 90 60 L 220 60" stroke="#cbd5e1" strokeWidth="2" fill="none" />
-            <path d="M 90 60 L 220 60" stroke="var(--primary)" strokeWidth="2" fill="none" className="flow-dash" />
-
-            {/* Path 2: Tree 1 to Residual */}
-            <path d="M 280 60 L 410 60" stroke="#cbd5e1" strokeWidth="2" fill="none" />
-            <path d="M 280 60 L 410 60" stroke="var(--primary)" strokeWidth="2" fill="none" className="flow-dash" />
-
-            {/* Path 3: Residual to Tree 2 */}
-            <path d="M 470 60 L 600 60" stroke="#cbd5e1" strokeWidth="2" fill="none" />
-            <path d="M 470 60 L 600 60" stroke="var(--primary)" strokeWidth="2" fill="none" className="flow-dash" />
-
-            {/* Path 4: Tree 2 to Final Output */}
-            <path d="M 660 60 L 710 60" stroke="#cbd5e1" strokeWidth="2" fill="none" />
-            <path d="M 660 60 L 710 60" stroke="var(--success)" strokeWidth="2" fill="none" className="flow-dash" />
-          </svg>
+          {/* Continuous connector line behind the circles */}
+          <div style={{ 
+            position: 'absolute', 
+            top: '56px', /* 30px padding + 26px circle radius */
+            left: '12%', 
+            right: '12%', 
+            height: '2px', 
+            backgroundColor: '#cbd5e1',
+            zIndex: 1
+          }}>
+            <div className="flow-dash-line" style={{ 
+              width: '100%', 
+              height: '100%', 
+              backgroundImage: 'linear-gradient(90deg, var(--primary) 50%, transparent 50%)', 
+              backgroundSize: '12px 100%', 
+              animation: 'flowLine 15s linear infinite' 
+            }} />
+          </div>
 
           {/* Node 1: Input Data */}
-          <div className="boosting-step">
-            <div className="boosting-node-circle active" style={{ fontSize: '12px' }}>DATA</div>
+          <div className="boosting-step" style={{ zIndex: 2 }}>
+            <div className="boosting-node-circle active" style={{ fontSize: '12px', backgroundColor: '#ffffff' }}>DATA</div>
             <span className="boosting-step-label">Input Features</span>
           </div>
 
           {/* Node 2: Weak Tree 1 */}
-          <div className="boosting-step">
+          <div className="boosting-step" style={{ zIndex: 2 }}>
             <div className="boosting-node-circle flow-pulse active" style={{ backgroundColor: 'var(--primary-light)', borderColor: 'var(--primary)', color: 'var(--primary)' }}>T₁</div>
             <span className="boosting-step-label">Initial Model</span>
           </div>
 
           {/* Node 3: Residuals / Loss Minimizer */}
-          <div className="boosting-step">
-            <div className="boosting-node-circle" style={{ borderColor: 'var(--warning)', color: 'var(--warning)', fontSize: '11px' }}>Δ Error</div>
+          <div className="boosting-step" style={{ zIndex: 2 }}>
+            <div className="boosting-node-circle" style={{ borderColor: 'var(--warning)', color: 'var(--warning)', fontSize: '11px', backgroundColor: '#ffffff' }}>Δ Error</div>
             <span className="boosting-step-label">Compute Gradients</span>
           </div>
 
           {/* Node 4: Corrective Tree 2 */}
-          <div className="boosting-step">
+          <div className="boosting-step" style={{ zIndex: 2 }}>
             <div className="boosting-node-circle flow-pulse active" style={{ backgroundColor: 'var(--primary-light)', borderColor: 'var(--primary)', color: 'var(--primary)' }}>T₂</div>
             <span className="boosting-step-label">Corrective Model</span>
           </div>
 
           {/* Node 5: Output (Ensemble) */}
-          <div className="boosting-step">
+          <div className="boosting-step" style={{ zIndex: 2 }}>
             <div className="boosting-node-circle active" style={{ backgroundColor: '#ecfdf5', borderColor: 'var(--success)', color: 'var(--success)' }}>F(x)</div>
             <span className="boosting-step-label">Strong Ensemble</span>
           </div>
