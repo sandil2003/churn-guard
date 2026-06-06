@@ -1,22 +1,15 @@
 import React from 'react';
 import { 
-  LayoutDashboard, 
   Users, 
-  TrendingUp, 
-  Activity, 
-  BarChart3, 
-  HelpCircle, 
   BookOpen 
 } from 'lucide-react';
 
 export default function Sidebar({ activeItem = 'Customers', onItemClick }) {
   const primaryNavItems = [
-    { name: 'Overview', icon: LayoutDashboard },
     { name: 'Customers', icon: Users }
   ];
 
   const footerNavItems = [
-    { name: 'Support', icon: HelpCircle },
     { name: 'Documentation', icon: BookOpen },
   ];
 
