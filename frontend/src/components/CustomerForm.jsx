@@ -1,6 +1,15 @@
 import React, { useState, useEffect } from 'react';
 import { Sparkles, ChevronDown, ChevronUp } from 'lucide-react';
 
+function Tooltip({ text }) {
+  return (
+    <span className="info-badge-container">
+      <span className="info-badge">!</span>
+      <span className="hover-tooltip">{text}</span>
+    </span>
+  );
+}
+
 export default function CustomerForm({ onSubmit, loading }) {
   // Primary configuration inputs
   const [tenure, setTenure] = useState(12);
@@ -65,7 +74,10 @@ export default function CustomerForm({ onSubmit, loading }) {
         {/* Tenure */}
         <div className="form-group">
           <label className="form-label" htmlFor="tenure-input">
-            Tenure (Months)
+            <span style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
+              Tenure (Months)
+              <Tooltip text="Number of months the customer has been with the company. Longer tenure usually indicates strong loyalty." />
+            </span>
             <span className="value-badge">{tenure}</span>
           </label>
           <div className="slider-container">
@@ -89,7 +101,10 @@ export default function CustomerForm({ onSubmit, loading }) {
         {/* Monthly Charges */}
         <div className="form-group">
           <label className="form-label" htmlFor="monthly-charges-input">
-            Monthly Charges ($)
+            <span style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
+              Monthly Charges ($)
+              <Tooltip text="The recurring monthly billing amount. Higher charges are often correlated with a higher risk of churn." />
+            </span>
           </label>
           <input
             id="monthly-charges-input"
@@ -107,7 +122,10 @@ export default function CustomerForm({ onSubmit, loading }) {
         {/* Total Charges */}
         <div className="form-group">
           <label className="form-label" htmlFor="total-charges-input">
-            Total Charges ($)
+            <span style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
+              Total Charges ($)
+              <Tooltip text="Cumulative charges billed to the customer over their entire lifetime. Reflects total customer lifetime spend." />
+            </span>
           </label>
           <input
             id="total-charges-input"
@@ -124,7 +142,12 @@ export default function CustomerForm({ onSubmit, loading }) {
 
         {/* Contract Type */}
         <div className="form-group">
-          <label className="form-label">Contract Type</label>
+          <label className="form-label">
+            <span style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
+              Contract Type
+              <Tooltip text="The agreement terms. Month-to-month contracts carry significantly higher churn rates compared to annual agreements." />
+            </span>
+          </label>
           <div className="segmented-control">
             {['Month-to-month', 'One year', 'Two year'].map((option) => (
               <button
@@ -142,7 +165,10 @@ export default function CustomerForm({ onSubmit, loading }) {
         {/* Payment Method */}
         <div className="form-group">
           <label className="form-label" htmlFor="payment-method-select">
-            Payment Method
+            <span style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
+              Payment Method
+              <Tooltip text="How the customer pays. Automatic credit card or bank transfers have higher retention than manual electronic/mailed checks." />
+            </span>
           </label>
           <div className="select-wrapper">
             <select
@@ -177,7 +203,12 @@ export default function CustomerForm({ onSubmit, loading }) {
           {showAdvanced && (
             <div style={{ display: 'flex', flexDirection: 'column', gap: '16px', marginTop: '16px', animation: 'fadeIn 0.2s ease-in-out' }}>
               <div className="form-group">
-                <label className="form-label">Internet Service</label>
+                <label className="form-label">
+                  <span style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
+                    Internet Service
+                    <Tooltip text="The connectivity type. Fiber optic offers high speed but has different retention profiles compared to DSL or no internet service." />
+                  </span>
+                </label>
                 <div className="segmented-control">
                   {['Fiber optic', 'DSL', 'No'].map((option) => (
                     <button
@@ -194,7 +225,12 @@ export default function CustomerForm({ onSubmit, loading }) {
 
               <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '12px' }}>
                 <div className="form-group">
-                  <label className="form-label">Online Security</label>
+                  <label className="form-label">
+                    <span style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
+                      Online Security
+                      <Tooltip text="Premium cybersecurity add-on. Customers with security services enabled are typically much less likely to churn." />
+                    </span>
+                  </label>
                   <div className="segmented-control">
                     {['Yes', 'No'].map((option) => (
                       <button
@@ -210,7 +246,12 @@ export default function CustomerForm({ onSubmit, loading }) {
                 </div>
 
                 <div className="form-group">
-                  <label className="form-label">Tech Support</label>
+                  <label className="form-label">
+                    <span style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
+                      Tech Support
+                      <Tooltip text="Dedicated support add-on. Immediate technical assistance decreases customer frustration and attrition." />
+                    </span>
+                  </label>
                   <div className="segmented-control">
                     {['Yes', 'No'].map((option) => (
                       <button
@@ -227,7 +268,12 @@ export default function CustomerForm({ onSubmit, loading }) {
               </div>
 
               <div className="form-group">
-                <label className="form-label">Paperless Billing</label>
+                <label className="form-label">
+                  <span style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
+                    Paperless Billing
+                    <Tooltip text="Whether bills are delivered electronically. Can sometimes correlate with digital-first, higher-mobility customers." />
+                  </span>
+                </label>
                 <div className="segmented-control">
                   {['Yes', 'No'].map((option) => (
                     <button
